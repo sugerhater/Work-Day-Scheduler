@@ -13,12 +13,21 @@ textarea{
   padding: 10px;
 }
 
+p {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  /* margin-top: auto;
+  margin-bottom: auto; */
+}
+
 .jumbotron {
   text-align: center;
   background-color: transparent;
   color: black;
   border-radius: 0;
-  border-bottom: 10px solid black;
+  /* border-bottom: 10px solid black; */
+  border-top: 1px dash black;
 }
 
 .description{
@@ -27,19 +36,30 @@ textarea{
 
 .time-block{
   text-align: center;
-  border-radius: 15px;
+  /* border-radius: 15px; */
+  width: 70% ;
+  border-top: 1px solid black;
 }
 
 .row {
   white-space: pre-wrap;
   height: 80px;
-  border-top: 1px solid white;;
+  border-top: 1px solid black;;
 }
 
 .hour {
+  height: 80px;
   background-color: #ffffff;
   color: #000000;
-  border-top: 1px dashed #000000;
+  border-top: 1px solid black;
+  border-right: 1px dashed #000000;
+  /* border-bottom: 1px dashed #000000; */
+  /* border-bottom: 1px solid #000000; */
+  width: 15%;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  justify-content: center;
 }
 
 .past {
@@ -63,6 +83,7 @@ textarea{
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
   color: white;
+  width: 15%;
 }
 
 .saveBtn i:hover {
