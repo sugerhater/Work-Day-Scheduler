@@ -24,7 +24,6 @@ function makeTable() {
         rowBlock.append(saveBtn);
         container.append(rowBlock);
         // console.log(1);
-
         timeBlock.val(i);
         if (i < 12) {
             hour.html(i + "AM")
@@ -42,29 +41,89 @@ function makeTable() {
 };
 makeTable();
 
-// make a function, if hour.val > than moment js index, add class 
+// make a function, if val > than moment js index, add class 
 
 var inputBox = $("<input></input");
 inputBox.addClass("inputBox");
 $(".time-block").append(inputBox);
 var timeBlockEl = $(".time-block").toArray();
-console.log(timeBlockEl);
+// console.log(timeBlockEl);
 console.log(timeBlockEl.length);
 
-var clockHourIndex = parseInt(moment().format('h'));
-console.log(clockHourIndex);
+var clockHourIndex = parseInt(moment().format('H'));
+// console.log(clockHourIndex);
 
-timeBlockEl.forEach(function(element){
-    console.log(element.value);
-    if (element.value >clockHourIndex) {
-        console.log(element);
-        console.log("element value > moment value")
-    element.classList.add("future");
-    }
-    else if (element.value == clockHourIndex){
-        element.classList.add("present")
-    }
-})
+$(document).ready(function(){
+
+    timeBlockEl.forEach(function(element){
+        console.log(element.value);
+        if (element.value >clockHourIndex) {
+            // console.log(element);
+            // console.log("element value > moment value")
+        element.classList.add("future");
+        }
+        else if (element.value == clockHourIndex){
+            element.classList.add("present")
+        }
+        else {
+            element.classList.add("past")
+        }
+    });
+});
+
+var todo;
+
+// function saveList(event){
+
+//     console.log("button click");
+//     var targetEl = event.target;
+//     console.log(targetEl);
+//     var inputEl= targetEl.previousElementSibling.firstChild;
+//     console.log(inputEl);
+//     inputEl.value = localStorage.getItem("todos");
+//     var inputText = inputEl.value.trim();
+//     if (inputText === "") {
+//         return;
+//     }
+//     localStorage.setItem("todos",inputText);
+//     inputEl.value=localStorage.getItem("todos");
+
+//     // inputEl.value= ("444")
+//     // targetEl.previousElementSibling.elementChild.text= ("CLICK");
+
+// }
+
+var savedList = $("input").toArray();
+console.log(savedList);
+var savedListValue = savedList.values();
+console.log(savedList[1].value);
+console.log(savedListValue);
+var inputArray = [];
+
+// save all of the value of input box. 
+
+function saveList(){
+    
+}
+
+$("button").on("click",saveList)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// makeTable();
 // hourblock.forEach(element => {if (element.value > moment().format('h')) {
 //     element.addClass("past")
 
@@ -76,7 +135,7 @@ timeBlockEl.forEach(function(element){
 // }
 // chooseHour();
 // moment.js("h");
-console.log(moment().format('h'));
+// console.log(moment().format('h'));
 // append
 
 // for (let i = 0; i < hourblock.length; i ++){
