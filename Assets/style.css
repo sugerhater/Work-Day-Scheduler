@@ -84,6 +84,7 @@ p {
   background-color: #06AED5;
   color: white;
   width: 15%;
+  font-size: 20px;
 }
 
 .saveBtn i:hover {
@@ -95,4 +96,5 @@ p {
   height: 80px;
   width: 100%;
   background-color: transparent;
+  font-size: 20px;
 }

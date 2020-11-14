@@ -42,11 +42,11 @@ function makeTable() {
 };
 makeTable();
 
-// make a function, if val > than moment js index, add class 
-
 var inputBox = $("<input></input");
 inputBox.addClass("inputBox");
 $(".time-block").append(inputBox);
+// make a function, if val > than moment js index, add class 
+
 var timeBlockEl = $(".time-block").toArray();
 // console.log(timeBlockEl);
 console.log(timeBlockEl.length);
@@ -55,29 +55,86 @@ var clockHourIndex = parseInt(moment().format('H'));
 var array = [];
 // console.log(clockHourIndex);
 
-$(document).ready(function () {
 
-    timeBlockEl.forEach(function (element) {
-        console.log(element.value);
-        array.push(element.value);
-        if (element.value > clockHourIndex) {
-            // console.log(element);
-            // console.log("element value > moment value")
-            element.classList.add("future");
-        }
-        else if (element.value == clockHourIndex) {
-            element.classList.add("present")
-        }
-        else {
-            element.classList.add("past")
-        }
-    });
+
+timeBlockEl.forEach(function (element) {
+    console.log(element.value);
+    array.push(element.value);
+    if (element.value > clockHourIndex) {
+        // console.log(element);
+        // console.log("element value > moment value")
+        element.classList.add("future");
+    }
+    else if (element.value == clockHourIndex) {
+        element.classList.add("present")
+    }
+    else {
+        element.classList.add("past")
+    }
 });
 
-$(document).ready(function () {
 
 
+var allInputBox = $("input").toArray();
+console.log(allInputBox);
+console.log(allInputBox[1]);
+
+var storedIndex = [];
+for (let i = 9; i < 18; i++) {
+    storedIndex.push(i)
+}
+
+console.log(storedIndex);
+
+
+$("button").on("click", function () {
+    console.log(this);
+    console.log(this.previousElementSibling.firstChild);
+    var clickedRow = this.previousElementSibling.value;
+
+    console.log(clickedRow);
+    // console.log(clickedRow.value);
+    var plan = $(this).siblings(".time-block").children().val();
+    // plan = localStorage.getItem("plan");
+    var toDoObject = { clickedRow: plan };
+
+    console.log(toDoObject);
+    console.log(array);
+
+    localStorage.setItem(clickedRow, plan);
+})
+
+allInputBox.forEach(function (element) {
+    console.log(element.parentElement.value);
+    for (let i = 0; i < 9; i++) {
+        elementIndex = element.parentElement.value
+        if (elementIndex == storedIndex[i]) {
+            element.value = localStorage.getItem(storedIndex[i]);
+        }
+    }
 });
+
+
+// function renderList() {
+//     var allInputBox = $("input");
+//     console.log(allInputBox);
+//     console.log(allInputBox[1]);
+
+//     allInputBox.forEach(function(element){
+//         if(element.parentElement.value == 9){
+//             element.value(localStorage.getItem("9"));
+//         }
+//     })
+//     allInputBox.val("abs");
+//     // for 
+//     console.log($("input"));
+// }
+// renderList();
+// allInputBox.val("abs");
+// for 
+// console.log($("input"));
+// renderList();
+
 
 
 // function saveList(event){
@@ -143,7 +200,7 @@ $(document).ready(function () {
 
 
 
-$("button").on("click", function(){
+$("button").on("click", function () {
     console.log(this);
     console.log(this.previousElementSibling.firstChild);
     var clickedRow = this.previousElementSibling.value;
@@ -152,18 +209,15 @@ $("button").on("click", function(){
     // console.log(clickedRow.value);
     var plan = $(this).siblings(".time-block").children().val();
     // plan = localStorage.getItem("plan");
-    var toDoObject = {clickedRow: plan};
-    
+    var toDoObject = { clickedRow: plan };
+
     console.log(toDoObject);
     console.log(array);
 
-    localStorage.setItem(clickedRow,plan);
-    
+    localStorage.setItem(clickedRow, plan);
+
 })
 
-function renderList(){
-    
-}
 
 // var plan = $(this).siblings(".time-block").children(".inputBox");
 // console.log(this.previousElementSibling.firstChild.val());
