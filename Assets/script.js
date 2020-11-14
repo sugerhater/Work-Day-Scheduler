@@ -38,6 +38,7 @@ function makeTable() {
         }
 
     }
+    // renderList();
 };
 makeTable();
 
@@ -51,18 +52,20 @@ var timeBlockEl = $(".time-block").toArray();
 console.log(timeBlockEl.length);
 
 var clockHourIndex = parseInt(moment().format('H'));
+var array = [];
 // console.log(clockHourIndex);
 
-$(document).ready(function(){
+$(document).ready(function () {
 
-    timeBlockEl.forEach(function(element){
+    timeBlockEl.forEach(function (element) {
         console.log(element.value);
-        if (element.value >clockHourIndex) {
+        array.push(element.value);
+        if (element.value > clockHourIndex) {
             // console.log(element);
             // console.log("element value > moment value")
-        element.classList.add("future");
+            element.classList.add("future");
         }
-        else if (element.value == clockHourIndex){
+        else if (element.value == clockHourIndex) {
             element.classList.add("present")
         }
         else {
@@ -71,7 +74,11 @@ $(document).ready(function(){
     });
 });
 
-var todo;
+$(document).ready(function () {
+
+
+});
+
 
 // function saveList(event){
 
@@ -93,20 +100,76 @@ var todo;
 
 // }
 
-var savedList = $("input").toArray();
-console.log(savedList);
-var savedListValue = savedList.values();
-console.log(savedList[1].value);
-console.log(savedListValue);
-var inputArray = [];
+// var savedList = $("input").toArray();
+// console.log(savedList);
+// var savedListValue = savedList.values();
+// console.log(savedList[1].value);
+// console.log(savedListValue);
+
+
+
+
+// var inputArray = [];
 
 // save all of the value of input box. 
 
-function saveList(){
+
+
+// function renderList() {
+//     var savedList = $("input").toArray();
+//     var savedListValue = localStorage.getItem("todos");
+//     for (let i = 0; i < savedListValue.length; i++) {
+//         console.log(savedListValue[i]);
+//         savedList[i].value = savedListValue[i];
+//     }
+// }
+
+// function saveList() {
+//     var savedList = $("input").toArray();
+//     var savedListValue = savedList.values();
+//     console.log(savedList);
+//     console.log(savedList[1].value);
+//     console.log(savedListValue);
+//     var inputArray = [];
+
+//     savedList = $("input").toArray();
+//     savedListValue = savedList.values();
+//     localStorage.setItem("todos", savedListValue);
+//     console.log(savedListValue);
+//     for (let i = 0; i < savedListValue.length; i++) {
+//         savedList[i].value = savedListValue[i];
+//     }
+// }
+
+
+
+$("button").on("click", function(){
+    console.log(this);
+    console.log(this.previousElementSibling.firstChild);
+    var clickedRow = this.previousElementSibling.value;
+
+    console.log(clickedRow);
+    // console.log(clickedRow.value);
+    var plan = $(this).siblings(".time-block").children().val();
+    // plan = localStorage.getItem("plan");
+    var toDoObject = {clickedRow: plan};
+    
+    console.log(toDoObject);
+    console.log(array);
+
+    localStorage.setItem(clickedRow,plan);
+    
+})
+
+function renderList(){
     
 }
 
-$("button").on("click",saveList)
+// var plan = $(this).siblings(".time-block").children(".inputBox");
+// console.log(this.previousElementSibling.firstChild.val());
+// console.log()
+// var plan = $(this).previousElementSibling.firstChild.val();
+
 
 
 
@@ -128,7 +191,7 @@ $("button").on("click",saveList)
 //     element.addClass("past")
 
 // }
-    
+
 // });
 // function chooseHour() {
 
