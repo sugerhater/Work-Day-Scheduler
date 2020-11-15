@@ -114,6 +114,23 @@ allInputBox.forEach(function (element) {
     }
 });
 
+$("button").on("click", function () {
+    console.log(this);
+    console.log(this.previousElementSibling.firstChild);
+    var clickedRow = this.previousElementSibling.value;
+
+    console.log(clickedRow);
+    // console.log(clickedRow.value);
+    var plan = $(this).siblings(".time-block").children().val();
+    // plan = localStorage.getItem("plan");
+    var toDoObject = { clickedRow: plan };
+
+    console.log(toDoObject);
+    console.log(array);
+
+    localStorage.setItem(clickedRow, plan);
+
+})
 
 // function renderList() {
 //     var allInputBox = $("input");
@@ -200,45 +217,12 @@ allInputBox.forEach(function (element) {
 
 
 
-$("button").on("click", function () {
-    console.log(this);
-    console.log(this.previousElementSibling.firstChild);
-    var clickedRow = this.previousElementSibling.value;
-
-    console.log(clickedRow);
-    // console.log(clickedRow.value);
-    var plan = $(this).siblings(".time-block").children().val();
-    // plan = localStorage.getItem("plan");
-    var toDoObject = { clickedRow: plan };
-
-    console.log(toDoObject);
-    console.log(array);
-
-    localStorage.setItem(clickedRow, plan);
-
-})
 
 
 // var plan = $(this).siblings(".time-block").children(".inputBox");
 // console.log(this.previousElementSibling.firstChild.val());
 // console.log()
 // var plan = $(this).previousElementSibling.firstChild.val();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // makeTable();
 // hourblock.forEach(element => {if (element.value > moment().format('h')) {
